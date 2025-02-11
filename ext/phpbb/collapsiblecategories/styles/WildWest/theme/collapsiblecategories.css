@@ -1,0 +1,9 @@
+/* Import base collapsible categories stylesheet */
+@import url("../../all/theme/collapsiblecategories.css");
+
+/* Styling overrides for WildWest theme */
+
+/* Collapse button */
+.collapse-btn {
+	margin: -15px 8px 0;
+}

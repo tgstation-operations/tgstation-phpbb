@@ -1,0 +1,51 @@
+.content p,
+.content h1,
+.content h2,
+.content h3,
+.content h4 {
+	font: inherit;
+	font-size: 100%;
+	line-height: 1.3em;
+	vertical-align: baseline;
+	text-transform: none;
+	border: 0;
+	color: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+.pages-content {
+	font-size: 1.25em;
+	line-height: 1.3em;
+}
+
+.pages-content h1 {
+	font-size: 2em;
+}
+
+.pages-content h2 {
+	font-size: 1.5em;
+}
+
+.pages-content h3 {
+	font-size: 1.17em;
+}
+
+.pages-content h4 {
+	font-size: 1em;
+}
+
+.pages-content h5 {
+	font-size: 0.83em;
+}
+
+.pages-content h6 {
+	font-size: 0.75em;
+}
+
+.pages-content .postimage {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	max-width: 100%;
+}

@@ -1,0 +1,9 @@
+/* Import base collapsible categories stylesheet */
+@import url("../../all/theme/collapsiblecategories.css");
+
+/* Styling overrides for Multi-Design theme */
+
+/* Collapse button */
+.collapse-btn {
+	margin: -30px 10px 0;
+}

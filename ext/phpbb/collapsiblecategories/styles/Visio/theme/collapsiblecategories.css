@@ -1,0 +1,10 @@
+/* Import base collapsible categories stylesheet */
+@import url("../../all/theme/collapsiblecategories.css");
+
+/* Styling overrides for Visio theme */
+
+/* Collapse button */
+.collapse-btn {
+	font-size: 1.5rem !important;
+	margin-top: -50px;
+}

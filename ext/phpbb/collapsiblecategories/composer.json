@@ -1,0 +1,56 @@
+{
+    "name": "phpbb/collapsiblecategories",
+    "type": "phpbb-extension",
+    "description": "An extension for phpBB that allows visitors to collapse and minimise forum categories with a simple click.",
+    "homepage": "https://www.phpbb.com",
+    "version": "2.0.0",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Marc Alexander",
+            "email": "admin@m-a-styles.de",
+            "homepage": "http://www.m-a-styles.de",
+            "role": "Extensions Team Consultant"
+        },
+        {
+            "name": "Michael Cullum",
+            "email": "michael@phpbb.com",
+            "homepage": "http://michaelcullum.com",
+            "role": "Extensions Team Consultant"
+        },
+        {
+            "name": "Matt Friedman",
+            "homepage": "http://vsephpbb.github.io",
+            "role": "Extensions Development Team Lead"
+        },
+        {
+            "name": "Ruslan Uzdenov",
+            "homepage": "http://www.phpbbguru.net",
+            "role": "Extensions Development Team"
+        },
+        {
+            "name": "Clemens Husung",
+            "email": "wolfsblvt@pinkes-forum.de",
+            "role": "Former Extensions Development Team Member"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0.0",
+        "phpbb/phpbb": ">=3.2.0"
+    },
+    "require-dev": {
+        "phing/phing": "2.4.*"
+    },
+    "extra": {
+        "display-name": "Collapsible Forum Categories",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2.0"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/collapsible_forum_categories",
+            "filename": "version_check"
+        }
+    }
+}

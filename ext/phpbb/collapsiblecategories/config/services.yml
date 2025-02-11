@@ -1,0 +1,23 @@
+services:
+    phpbb.collapsiblecategories.listener:
+        class: phpbb\collapsiblecategories\event\listener
+        arguments:
+            - '@phpbb.collapsiblecategories.operator'
+            - '@template'
+        tags:
+            - { name: event.listener }
+
+    phpbb.collapsiblecategories.controller:
+        class: phpbb\collapsiblecategories\controller\main_controller
+        arguments:
+            - '@phpbb.collapsiblecategories.operator'
+            - '@request'
+
+    phpbb.collapsiblecategories.operator:
+        class: phpbb\collapsiblecategories\operator\operator
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@controller.helper'
+            - '@request'
+            - '@user'

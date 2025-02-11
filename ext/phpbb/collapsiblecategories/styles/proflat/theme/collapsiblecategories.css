@@ -1,0 +1,9 @@
+/* Import base collapsible categories stylesheet */
+@import url("../../all/theme/collapsiblecategories.css");
+
+/* Styling overrides for proflat theme */
+
+/* Collapse button */
+.collapse-btn {
+	margin: -27px 10px 0;
+}
