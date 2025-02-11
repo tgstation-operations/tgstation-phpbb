@@ -1,0 +1,5 @@
+services:
+    tgstation.lockprofilefieldedit.listener:
+        class: tgstation\lockprofilefieldedit\event\main_listener
+        tags:
+            - { name: event.listener }

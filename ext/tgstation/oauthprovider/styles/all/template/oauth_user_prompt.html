@@ -1,0 +1,33 @@
+{{ OAUTH_HOST }} would like to know who you are on the forums and READ the following details about your account.
+<br>
+<ul style="margin:20px;">
+	<!-- BEGIN oauth_scope -->
+		<li>
+			<!-- IF oauth_scope.SCOPE_BOLD -->
+				<b>
+			<!-- ENDIF -->
+			<!-- IF oauth_scope.SCOPE_RED -->
+				<font color="red">
+			<!-- ENDIF -->
+			{oauth_scope.SCOPE_ID} - {oauth_scope.SCOPE_EXPLAIN}
+			<!-- IF oauth_scope.SCOPE_RED -->
+				</font>
+			<!-- ENDIF -->
+			<!-- IF oauth_scope.SCOPE_BOLD -->
+				</b>
+			<!-- ENDIF -->
+		</li>
+	<!-- END oauth_scope -->
+</ul>
+
+<br>Grant access?<br>
+
+<div style="margin:20px; margin-top:5px">
+	<div class="quotetitle">
+		<b>Preview data that will be sent</b> 
+		<input type="button" value="Show" style="width:45px;font-size:10px;margin:0px;padding:0px;" onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = '';        this.innerText = ''; this.value = 'Hide'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Show'; }" />
+	</div>
+	<div class="quotecontent">
+		<div style="display: none;"><pre>{{ OAUTH_DATA_PREVIEW }}</pre></div>
+	</div>
+</div>

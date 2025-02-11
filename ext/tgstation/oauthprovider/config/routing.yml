@@ -1,0 +1,10 @@
+oauth_route_auth:
+    path: /tgapi/oauth/auth
+    defaults: { _controller: tgstation.oauthprovider.controller:handle_auth }
+oauth_route_token:
+    path: /tgapi/oauth/token
+    defaults: { _controller: tgstation.oauthprovider.controller:handle_token }
+    methods: POST
+oauth_route_userapi:
+    path: /tgapi/user/me
+    defaults: { _controller: tgstation.oauthprovider.controller:handle_user }

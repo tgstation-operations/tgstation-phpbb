@@ -1,0 +1,10 @@
+services:
+    tgstation.bypasspasswordpermission.listener:
+        class: tgstation\bypasspasswordpermission\event\main_listener
+        arguments:
+            - '@auth'
+            - '@dbal.conn'
+            - '@user'
+            - '@request'
+        tags:
+            - { name: event.listener }

@@ -1,0 +1,16 @@
+services:
+    tgstation.oauthprovider.controller:
+        class: tgstation\oauthprovider\controller\main
+        arguments:
+            - '@auth'
+            - '@cache'
+            - '@config'
+            - '@request'
+            - '@symfony_request'
+            - '@dbal.conn'
+            - '@template'
+            - '@user'
+            - '@language'
+            - '@controller.helper'
+            - '@path_helper'
+            - '%core.table_prefix%'

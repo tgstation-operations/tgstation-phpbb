@@ -1,0 +1,14 @@
+services:
+    auth.provider.securedb:
+        class: tgstation\securepasswords\auth\provider\securedb
+        arguments:
+            - '@captcha.factory'
+            - '@config'
+            - '@dbal.conn'
+            - '@passwords.manager'
+            - '@request'
+            - '@user'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+        tags:
+            - { name: auth.provider }

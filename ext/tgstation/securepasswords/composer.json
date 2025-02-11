@@ -1,0 +1,27 @@
+{
+    "name": "tgstation/securepasswords",
+    "type": "phpbb-extension",
+    "description": "Validates passwords are secure and not simple, common, or hacked at login, register, and change. Users with insecure passwords must reset their password before they can login again.",
+    "homepage": "https://tgstation13.org",
+    "version": "1.0.0-dev",
+    "time": "2021-10-02",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Kyle Spier-Swenson",
+            "email": "kyle@kyle.software",
+            "homepage": "https://kyle.software",
+            "role": "Host"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "display-name": "Secure Passwords",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2.0,<4.0.0@dev"
+        }
+    }
+}

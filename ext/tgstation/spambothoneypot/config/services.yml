@@ -1,0 +1,9 @@
+services:
+    tgstation.spambothoneypot.listener:
+        class: tgstation\spambothoneypot\event\main_listener
+        arguments:
+            - '@auth'
+            - '@dbal.conn'
+            - '@user'
+        tags:
+            - { name: event.listener }
