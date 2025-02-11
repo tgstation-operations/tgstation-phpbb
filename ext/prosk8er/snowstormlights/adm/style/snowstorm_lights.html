@@ -1,0 +1,83 @@
+{% include 'overall_header.html' %}
+
+<a id="maincontent"></a>
+
+<h1>{{ lang('SNOWSTORM_LIGHTS') }}</h1>
+<p>{{ lang('SNOWSTORM_LIGHTS_EXPLAIN') }}</p>
+
+<form id="acp_snowstorm_lights" method="post" action="{U_ACTION}">
+
+	<fieldset>
+		<legend>{{ lang('GENERAL_OPTIONS') }}</legend>
+
+		<dl>
+			<dt><label for="scl_enabled">{{ lang('SCL_ENABLED') ~ lang('COLON') }}</label></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="scl_enabled" name="scl_enabled" value="1"{% if SCL_ENABLED %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="scl_enabled" value="0"{% if not SCL_ENABLED %} checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<br />
+
+		<dl>
+			<dt><label for="lightscss_enabled">{{ lang('LIGHTSCSS_ENABLED') ~ lang('COLON') }}</label></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="lightscss_enabled" name="lightscss_enabled" value="1"{% if LIGHTSCSS_ENABLED %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="lightscss_enabled" value="0"{% if not LIGHTSCSS_ENABLED %} checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<br />
+
+		<dl>
+			<dt><label for="snow_enabled">{{ lang('SNOW_ENABLED') ~ lang('COLON') }}</label></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="snow_enabled" name="snow_enabled" value="1"{% if SNOW_ENABLED %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="snow_enabled" value="0"{% if not SNOW_ENABLED %} checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<br />
+
+		<dl>
+			<dt><label for="snowcss_enabled">{{ lang('SNOWCSS_ENABLED') ~ lang('COLON') }}</label></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="snowcss_enabled" name="snowcss_enabled" value="1"{% if SNOWCSS_ENABLED %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="snowcss_enabled" value="0"{% if not SNOWCSS_ENABLED %} checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<br />
+
+		<dl>
+			<dt><label for="snowbg_enabled">{{ lang('SNOWBG_ENABLED') ~ lang('COLON') }}</label></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="snowbg_enabled" name="snowbg_enabled" value="1"{% if SNOWBG_ENABLED %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="snowbg_enabled" value="0"{% if not SNOWBG_ENABLED %} checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<br />
+
+		<dl>
+			<dt><label for="santahat_enabled">{{ lang('SANTAHAT_ENABLED') ~ lang('COLON') }}</label></dt>
+			<dd>
+				<label><input type="radio" class="radio" id="santahat_enabled" name="santahat_enabled" value="1"{% if SANTAHAT_ENABLED %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="santahat_enabled" value="0"{% if not SANTAHAT_ENABLED %} checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+		<p class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+		</p>
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+
+</form>
+
+{% include 'overall_footer.html' %}

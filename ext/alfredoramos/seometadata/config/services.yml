@@ -1,0 +1,37 @@
+services:
+    alfredoramos.seometadata.listener:
+        class: alfredoramos\seometadata\event\listener
+        arguments:
+            - '@alfredoramos.seometadata.helper'
+        tags:
+            - { name: event.listener }
+
+    alfredoramos.seometadata.acp.controller:
+        class: alfredoramos\seometadata\controller\acp
+        arguments:
+            - '@config'
+            - '@template'
+            - '@request'
+            - '@language'
+            - '@user'
+            - '@log'
+            - '@alfredoramos.seometadata.helper'
+
+    alfredoramos.seometadata.helper:
+        class: alfredoramos\seometadata\includes\helper
+        arguments:
+            - '@dbal.conn'
+            - '@config'
+            - '@user'
+            - '@request'
+            - '@template'
+            - '@language'
+            - '@filesystem'
+            - '@cache.driver'
+            - '@controller.helper'
+            - '@dispatcher'
+            - '@upload_imagesize'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '%tables.posts%'
+            - '%tables.attachments%'

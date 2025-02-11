@@ -1,0 +1,29 @@
+#santahat {
+	background: url("./images/santahat.png");
+	height: 128px;
+	width: 128px;
+	margin: -16px 0 0 -52px;
+	position: absolute;
+	pointer-events: none;
+}
+.logo {
+	text-indent: 20px;
+}
+
+a.avatar::before, dt.profile-avatar::before {
+    z-index: 1;
+    content: '';
+    background: url(./images/santahat.png);
+    position: absolute;
+    margin-left: -51px;
+    margin-top: -16px;
+    pointer-events: none;
+    width: 110px;
+    height: 127px;
+	display: block;
+}
+
+
+.darkmode a.avatar::before, dt.profile-avatar::before {
+    filter: invert(1) hue-rotate(.5turn)
+}

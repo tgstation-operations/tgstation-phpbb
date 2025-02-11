@@ -1,0 +1,12 @@
+services:
+    primehalo.primepostrevisions.cron.task.prune_post_revisions:
+        class: primehalo\primepostrevisions\cron\task\prune_post_revisions
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@log'
+            - '%primehalo.primepostrevisions.tables.primepostrev%'
+        calls:
+            - ['set_name', ['cron.task.primepostrevisions.prune']]
+        tags:
+            - { name: cron.task }

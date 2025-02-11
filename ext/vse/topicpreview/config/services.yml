@@ -1,0 +1,101 @@
+services:
+    vse.topicpreview.acp.controller:
+        class: vse\topicpreview\controller\acp_controller
+        arguments:
+            - '@language'
+            - '@request'
+            - '@vse.topicpreview.settings'
+            - '@template'
+
+    vse.topicpreview.data:
+        class: vse\topicpreview\core\data
+        arguments:
+            - '@config'
+            - '@user'
+
+    vse.topicpreview.display:
+        class: vse\topicpreview\core\display
+        arguments:
+            - '@config'
+            - '@dispatcher'
+            - '@language'
+            - '@template'
+            - '@vse.topicpreview.trim'
+            - '@user'
+            - '%core.root_path%'
+
+    vse.topicpreview.trim:
+        class: vse\topicpreview\core\trim\trim
+        arguments:
+            - '@vse.topicpreview.tools.manager'
+
+    vse.topicpreview.settings:
+        class: vse\topicpreview\core\settings
+        arguments:
+            - '@cache.driver'
+            - '@config'
+            - '@dbal.conn'
+            - '@ext.manager'
+            - '@request'
+            - '%core.root_path%'
+
+# ----- Event Listeners -----
+    vse.topicpreview.listener:
+        class: vse\topicpreview\event\listener
+        arguments:
+            - '@vse.topicpreview.data'
+            - '@vse.topicpreview.display'
+        tags:
+            - { name: event.listener }
+
+    vse.topicpreview.ucp_listener:
+        class: vse\topicpreview\event\ucp_listener
+        arguments:
+            - '@config'
+            - '@language'
+            - '@request'
+            - '@template'
+            - '@user'
+        tags:
+            - { name: event.listener }
+
+# ----- Trim tool management -----
+    vse.topicpreview.tools.manager:
+        class: vse\topicpreview\core\trim\manager
+        arguments:
+            - '@vse.topicpreview.tools_collection'
+
+    vse.topicpreview.tools_collection:
+        class: phpbb\di\ordered_service_collection
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: service_collection, tag: vse.topicpreview.tools }
+
+# ----- Trim tools -----
+    vse.topicpreview.tool.bbcodes:
+        class: vse\topicpreview\core\trim\tools\bbcodes
+        arguments:
+            - '@config'
+            - '@vse.topicpreview.tool.bbcodes_legacy'
+            - '@?text_formatter.utils'
+        calls:
+            - [set_name, [bbcodes]]
+        tags:
+            - { name: vse.topicpreview.tools, order: 1 }
+
+    vse.topicpreview.tool.bbcodes_legacy:
+        class: vse\topicpreview\core\trim\tools\bbcodes_legacy
+        arguments:
+            - '@config'
+        calls:
+            - [set_name, [bbcodes_legacy]]
+        tags:
+            - { name: vse.topicpreview.tools, order: 2 }
+
+    vse.topicpreview.tool.markup:
+        class: vse\topicpreview\core\trim\tools\markup
+        calls:
+            - [set_name, [markup]]
+        tags:
+            - { name: vse.topicpreview.tools, order: 3 }

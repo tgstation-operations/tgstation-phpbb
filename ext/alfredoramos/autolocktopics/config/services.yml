@@ -1,0 +1,21 @@
+imports:
+    - { resource: cron.yml }
+
+services:
+    alfredoramos.autolocktopics.listener:
+        class: alfredoramos\autolocktopics\event\listener
+        arguments:
+            - '@alfredoramos.autolocktopics.helper'
+        tags:
+            - { name: event.listener }
+
+    alfredoramos.autolocktopics.helper:
+        class: alfredoramos\autolocktopics\includes\helper
+        arguments:
+            - '@dbal.conn'
+            - '@log'
+            - '@user'
+            - '@request'
+            - '@dispatcher'
+            - '%tables.forums%'
+            - '%tables.topics%'

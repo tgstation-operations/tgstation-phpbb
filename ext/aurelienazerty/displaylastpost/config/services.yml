@@ -1,0 +1,11 @@
+services:
+    aurelienazerty.displaylastpost.listener:
+        class: aurelienazerty\displaylastpost\event\listener
+        arguments:
+            - '@dbal.conn'
+            - '@config'
+            - '@user'
+            - '@request'
+            - '@language'
+        tags:
+            - { name: event.listener }

@@ -1,0 +1,5 @@
+services:
+    mothblocks.antibirthdayspam.listener:
+        class: mothblocks\antibirthdayspam\event\main_listener
+        tags:
+            - { name: event.listener }

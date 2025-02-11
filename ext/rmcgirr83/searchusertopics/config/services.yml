@@ -1,0 +1,13 @@
+services:
+    rmcgirr83.searchusertopics.listener:
+        class: rmcgirr83\searchusertopics\event\listener
+        arguments:
+            - '@auth'
+            - '@config'
+            - '@dbal.conn'
+            - '@language'
+            - '@template'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }

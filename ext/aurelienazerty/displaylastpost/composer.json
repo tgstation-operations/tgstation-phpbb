@@ -1,0 +1,56 @@
+{
+    "name": "aurelienazerty/displaylastpost",
+    "type": "phpbb-extension",
+    "description": "Extension which displays the post on the bottom of the previous page on the top of viewtopic ordered by post time only (ASC or DESC).",
+    "homepage": "https://www.team-azerty.com",
+    "version": "1.2.7",
+    "time": "2021-01-30",
+    "keywords": [
+        "phpbb",
+        "extension",
+        "post"
+    ],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "aurelienazerty",
+            "homepage": "https://www.team-azerty.com",
+            "role": "Main developer"
+        },
+        {
+            "name": "Théonaute",
+            "homepage": "http://www.phpbb-fr.com/",
+            "role": "phpBB 3.0.x initial MOD developer"
+        },
+        {
+            "name": "Kyosuke",
+            "role": "Developer contributor"
+        },
+        {
+            "name": "Raul [ThE KuKa]",
+            "homepage": "http://www.raularroyomonzo.es/",
+            "role": "Spanish Translator"
+        },
+        {
+            "name": "HenLen",
+            "role": "German Translator"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "phpbb/phpbb": ">=3.2.1",
+        "composer/installers": "~1.0.0"
+    },
+    "extra": {
+        "display-name": "DisplayLastPost",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2.1"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/displaylastpost_2",
+            "filename": "version_check",
+            "ssl": true
+        }
+    }
+}

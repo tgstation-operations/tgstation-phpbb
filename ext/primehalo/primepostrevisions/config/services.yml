@@ -1,0 +1,49 @@
+imports:
+    - { resource: cron.yml }
+    - { resource: tables.yml }
+
+services:
+
+    primehalo.primepostrevisions.core:
+        class: primehalo\primepostrevisions\core\prime_post_revisions
+        arguments:
+            - '@auth'
+            - '@dbal.conn'
+            - '@user'
+            - '%primehalo.primepostrevisions.tables.primepostrev%'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+
+    primehalo.primepostrevisions.forum_map_ppr:
+        class: primehalo\primepostrevisions\core\forum_map_ppr
+        arguments:
+            - '@dbal.conn'
+
+    primehalo.primepostrevisions.controller:
+        class: primehalo\primepostrevisions\controller\controller
+        arguments:
+            - '@auth'
+            - '@config'
+            - '@dbal.conn'
+            - '@controller.helper'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@cache.driver'
+            - '@primehalo.primepostrevisions.core'
+            - '@pagination'
+            - '%primehalo.primepostrevisions.tables.primepostrev%'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+
+    primehalo.primepostrevisions.listener:
+        class: primehalo\primepostrevisions\event\listener
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@controller.helper'
+            - '@request'
+            - '@primehalo.primepostrevisions.core'
+            - '%primehalo.primepostrevisions.tables.primepostrev%'
+        tags:
+            - { name: event.listener }

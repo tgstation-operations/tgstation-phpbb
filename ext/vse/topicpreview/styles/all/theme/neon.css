@@ -1,0 +1,57 @@
+/**
+* Topic Preview - Neon
+*
+* Color schema:
+* backgrounds: #000000
+* borders:     #c965eb
+* box shadows: #a200ff
+* font colors: #fff, #b071cd,
+*/
+@import url("light.css");
+
+.topic_preview_container {
+	background-color: #000000;
+	background-color: rgba(0, 0, 0, 0.97);
+	border: 2px solid #c965eb;
+	-moz-box-shadow: 0 0 15px rgba(162, 0, 255, 0.35);
+	-webkit-box-shadow: 0 0 15px rgba(162, 0, 255, 0.35);
+	box-shadow: 0 0 15px rgba(162, 0, 255, 0.35);
+	color: #ffffff;
+}
+
+.topic_preview_container:before {
+	/* Upper Triangle */
+	background-color: #000000;
+	background-color: rgba(0, 0, 0, 0.97);
+	border-top: 2px solid #c965eb;
+	border-right: 2px solid #c965eb;
+	margin-top: -17px;
+}
+
+.topic_preview_container.invert:after {
+	/* Lower Triangle */
+	background-color: #000000;
+	background-color: rgba(0, 0, 0, 0.97);
+	border-bottom: 2px solid #c965eb;
+	border-left: 2px solid #c965eb;
+}
+
+.topic_preview_container strong {
+	color: #b071cd;
+}
+
+/* Avatars and Text */
+.topic_preview_avatar {
+	margin: 0 10px 0 0;
+}
+
+.topic_preview_avatar img {
+	border: solid 1px #3080d0;
+	-moz-box-shadow: 0 0 10px rgba(0, 156, 255, 0.6);
+	-webkit-box-shadow: 0 0 10px rgba(0, 156, 255, 0.6);
+	box-shadow: 0 0 10px rgba(0, 156, 255, 0.6);
+}
+
+.topic_preview_avatar.rtl {
+	margin: 0 0 0 10px;
+}

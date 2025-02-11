@@ -1,0 +1,11 @@
+<dl>
+	<dt><label for="primepostrev_enable">{{ lang('ACP_PRIMEPOSTREVISIONS_ENABLE') ~ lang('COLON') }}</label><br /><span>{{ lang('ACP_PRIMEPOSTREVISIONS_ENABLE_EXPLAIN') }}</span></dt>
+	<dd>
+		<label><input type="radio" class="radio" name="primepostrev_enable" value="1"{% if S_PRIMEPOSTREV_ENABLE %} id="primepostrev_enable" checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+		<label><input type="radio" class="radio" name="primepostrev_enable" value="0"{% if not S_PRIMEPOSTREV_ENABLE %} id="primepostrev_enable" checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="primepostrev_autoprune">{{ lang('ACP_PRIMEPOSTREVISIONS_AUTOPRUNE') ~ lang('COLON') }}</label><br /><span>{{ lang('ACP_PRIMEPOSTREVISIONS_AUTOPRUNE_EXPLAIN') }}</span></dt>
+	<dd><input type="number" id="primepostrev_autoprune" name="primepostrev_autoprune" value="{{ PRIMEPOSTREV_AUTOPRUNE }}" min="0" max="9999" /> {{ lang('DAYS') }}</dd>
+</dl>

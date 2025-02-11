@@ -1,0 +1,33 @@
+{
+    "name": "rxu/firstpostoneverypage",
+    "type": "phpbb-extension",
+    "description": "Allows to show the first post of a topic on top of its every page. This can be done by checking the relevant checkbox in the post options while creating a new topic or editing the first post of existing one. Also, you can set the first post to be always on top of every topic on per-forum basis by setting the relevant option on forum admisitration page (while creating a forum or editing settings for existing forum).",
+    "homepage": "http://www.phpbbguru.net",
+    "version": "3.0.0",
+    "time": "2020-05-21",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "rxu",
+            "homepage": "http://www.phpbbguru.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "phpbb/phpbb": ">=3.2.0",
+        "composer/installers": "~1.0.0"
+    },
+    "extra": {
+        "display-name": "First post on every page",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2.0"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/first_post_on_every_page_3",
+            "filename": "version_check",
+            "ssl": true
+        }
+    }
+}

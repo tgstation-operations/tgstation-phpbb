@@ -1,0 +1,40 @@
+{
+    "name": "mazeltof/vectoricons",
+    "type": "phpbb-extension",
+    "description": "Replaces matrix icons with vectorial icons",
+    "homepage": "http://www.phpbb-fr.com/customise/db/author/mazeltof/",
+    "version": "1.2.0",
+    "keywords": [
+        "phpbb",
+        "extension"
+    ],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "mazeltof",
+            "homepage": "http://www.mazeland.fr/",
+            "role": "Sorcerer's Apprentice"
+        },
+        {
+            "name": "cabot",
+            "homepage": "http://cabotweb.fr",
+            "role": "SuhiMaker"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "composer/installers": "~1.0",
+        "phpbb/phpbb": ">=3.2"
+    },
+    "extra": {
+        "display-name": "Vector Icons",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/vector_icons",
+            "filename": "version_check"
+        }
+    }
+}

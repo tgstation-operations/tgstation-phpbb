@@ -1,0 +1,6 @@
+{% if TOPICS %}
+	<dt>{{ lang('SUT_TOTAL_TOPICS') }}{{ lang('COLON') }}</dt>
+	<dd>{{ TOPICS }} {% if U_SEARCH_TOPICS %}| <strong><a href="{{ U_SEARCH_TOPICS }}">{{ lang('SEARCH_USER_TOPICS') }}</a></strong>{% endif %}
+		{% if TOPICS_PERCENT %}<br>({{ TOPICS_PERCENT }} / {{ TOPICS_PER_DAY }}){% endif %}
+	</dd>
+{% endif %}

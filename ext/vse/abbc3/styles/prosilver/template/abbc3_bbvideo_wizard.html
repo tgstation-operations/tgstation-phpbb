@@ -1,0 +1,41 @@
+<form>
+	<div class="panel">
+		<div class="inner">
+			<fieldset>
+				<dl>
+					<dt><label for="bbvideo_wizard_sites">{{ lang('ABBC3_BBVIDEO_SITES') ~ lang('COLON') }}</label></dt>
+					<dd>
+						<select id="bbvideo_wizard_sites" name="bbvideo_wizard_sites">
+							{% for siteId, siteData in ABBC3_BBVIDEO_SITES %}
+								<option value="{{ siteData.example }}"{% if siteId == ABBC3_BBVIDEO_DEFAULT %} selected="selected"{% endif %}>{{ siteData.name }}</option>
+							{% endfor %}
+						</select>
+					</dd>
+				</dl>
+				{% if attribute(ABBC3_BBVIDEO_SITES, ABBC3_BBVIDEO_DEFAULT) is defined %}
+				<dl>
+					<dt><label for="bbvideo_wizard_example">{{ lang('ABBC3_BBCODE_WIZ_EXAMPLE') ~ lang('COLON') }}</label></dt>
+					<dd>
+						<input type="text" id="bbvideo_wizard_example" name="bbvideo_wizard_example" readonly="readonly" value="{{ attribute(ABBC3_BBVIDEO_SITES, ABBC3_BBVIDEO_DEFAULT).example }}" size="45" class="inputbox disabled">
+					</dd>
+				</dl>
+				{% endif %}
+				<hr>
+				<dl>
+					<dt><label for="bbvideo_wizard_link">{{ lang('ABBC3_URL_LINK') ~ lang('COLON') }}</label></dt>
+					<dd>
+						<input type="text" id="bbvideo_wizard_link" name="bbvideo_wizard_link" value="" class="inputbox" size="45">
+					</dd>
+				</dl>
+			</fieldset>
+		</div>
+	</div>
+	<div class="panel" style="margin-bottom:0">
+		<div class="inner">
+			<fieldset class="submit-buttons">
+				<input type="button" name="bbcode_wizard_submit" id="bbcode_wizard_submit" value="{{ lang('ABBC3_BBCODE_WIZ_SUBMIT') }}" class="button1 button button-form" data-bbcode="bbvideo">&nbsp;
+				<input type="button" name="bbcode_wizard_cancel" id="bbcode_wizard_cancel" value="{{ lang('CANCEL') }}" class="button2 button button-form">
+			</fieldset>
+		</div>
+	</div>
+</form>

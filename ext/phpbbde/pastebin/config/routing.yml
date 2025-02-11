@@ -1,0 +1,4 @@
+phpbbde_pastebin_main_controller:
+    path: /pastebin/
+    defaults:
+        _controller: 'phpbbde.pastebin.controller.main:handle'

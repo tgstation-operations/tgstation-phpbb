@@ -1,0 +1,10 @@
+.snow {
+	background: url("./images/snow.png") repeat-x;
+	height: 26px;
+    margin: -15px -6px 0;
+	text-shadow: 0 0 3px #000;
+}
+
+.action-bar {
+	margin: 7px 0;
+}

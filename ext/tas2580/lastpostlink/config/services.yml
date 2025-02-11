@@ -1,0 +1,11 @@
+services:
+    tas2580.lastpostlink.listener:
+        class: tas2580\lastpostlink\event\listener
+        arguments:
+            - '@auth'
+            - '@config'
+            - '@request'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }

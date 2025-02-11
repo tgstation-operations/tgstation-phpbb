@@ -1,0 +1,41 @@
+{
+    "name": "rmcgirr83/searchusertopics",
+    "type": "phpbb-extension",
+    "description": "This Extension displays number of topics started by a user when visiting that users profile",
+    "version": "1.0.5",
+    "time": "2020-09-12",
+    "keywords": [
+        "phpbb",
+        "extension",
+        "topics",
+        "users",
+        "profile"
+    ],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Rich McGirr",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "phpbb/phpbb": ">=3.2",
+        "composer/installers": "~1.0.0"
+    },
+    "require-dev": {
+        "phpbb/epv": "dev-master"
+    },
+    "extra": {
+        "display-name": "Search user topics",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/phpbb_3.1_search_user_topics",
+            "filename": "version_check",
+            "ssl": true
+        }
+    }
+}

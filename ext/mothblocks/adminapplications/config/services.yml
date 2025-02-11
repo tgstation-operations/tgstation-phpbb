@@ -1,0 +1,9 @@
+services:
+    mothblocks.adminapplications.listener:
+        class: mothblocks\adminapplications\event\main_listener
+        arguments:
+            - '@auth'
+            - '@dbal.conn'
+            - '@user'
+        tags:
+            - { name: event.listener }

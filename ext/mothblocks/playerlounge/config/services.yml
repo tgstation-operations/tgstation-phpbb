@@ -1,0 +1,11 @@
+services:
+    mothblocks.playerlounge.listener:
+        class: mothblocks\playerlounge\event\main_listener
+        arguments:
+            - '@auth'
+            - '@cache'
+            - '@dbal.conn'
+            - '@profilefields.manager'
+            - '@user'
+        tags:
+            - { name: event.listener }

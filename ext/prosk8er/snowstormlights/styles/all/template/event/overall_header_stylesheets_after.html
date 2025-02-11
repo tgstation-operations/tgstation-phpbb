@@ -1,0 +1,10 @@
+{% if S_SCL_ENABLED and S_SCL_UCP_ENABLED %}
+	{% INCLUDEJS '@prosk8er_snowstormlights/snowstorm/lights/soundmanager2-nodebug-jsmin.js' %}
+	{% INCLUDEJS '@prosk8er_snowstormlights/snowstorm/lights/animation-min.js' %}
+	{% INCLUDEJS '@prosk8er_snowstormlights/snowstorm/lights/msostrip.js' %}
+	{% INCLUDEJS '@prosk8er_snowstormlights/snowstorm/lights/init.js' %}
+{% endif %}
+
+{% if S_SNOW_ENABLED and S_SNOW_UCP_ENABLED %}
+	{% INCLUDEJS '@prosk8er_snowstormlights/snowstorm/msostm.js' %}
+{% endif %}
