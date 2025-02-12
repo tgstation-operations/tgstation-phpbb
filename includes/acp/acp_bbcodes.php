@@ -86,7 +86,7 @@ class acp_bbcodes
 				$display_on_posting = $request->variable('display_on_posting', 0);
 
 				$bbcode_match = $request->variable('bbcode_match', '');
-				$bbcode_tpl = htmlspecialchars_decode($request->variable('bbcode_tpl', '', true), ENT_COMPAT);
+				$bbcode_tpl = html_entity_decode($request->variable('bbcode_tpl', '', true), ENT_COMPAT);
 				$bbcode_helpline = $request->variable('bbcode_helpline', '', true);
 			break;
 		}
@@ -110,6 +110,7 @@ class acp_bbcodes
 				);
 
 				$bbcode_tokens = array('TEXT', 'SIMPLETEXT', 'INTTEXT', 'IDENTIFIER', 'NUMBER', 'EMAIL', 'URL', 'LOCAL_URL', 'RELATIVE_URL', 'COLOR');
+				$bbcode_tokens = array_merge($bbcode_tokens, ['ALNUM', 'CHOICE', 'FLOAT', 'HASHMAP', 'INT', 'IP', 'IPPORT', 'IPV4', 'IPV6', 'MAP', 'RANGE', 'REGEXP', 'TIMESTAMP', 'UINT']);
 
 				/**
 				* Modify custom bbcode template data before we display the add/edit form
@@ -235,7 +236,7 @@ class acp_bbcodes
 						trigger_error($user->lang['BBCODE_TAG_DEF_TOO_LONG'] . adm_back_link($this->u_action), E_USER_WARNING);
 					}
 
-					if (strlen($bbcode_helpline) > 255)
+					if (strlen($bbcode_helpline) > 3000)
 					{
 						trigger_error($user->lang['BBCODE_HELPLINE_TOO_LONG'] . adm_back_link($this->u_action), E_USER_WARNING);
 					}

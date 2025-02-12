@@ -71,6 +71,13 @@ class mysqli extends \phpbb\db\driver\mysql_base
 			// Disable loading local files on client side
 			@mysqli_options($this->db_connect_id, MYSQLI_OPT_LOCAL_INFILE, false);
 
+			/*
+			 * As of PHP 8.1 MySQLi default error mode is set to MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT
+			 * See https://wiki.php.net/rfc/mysqli_default_errmode
+			 * Since phpBB implements own SQL errors handling, explicitly set it back to MYSQLI_REPORT_OFF
+			 */
+			mysqli_report(MYSQLI_REPORT_OFF);
+
 			@mysqli_query($this->db_connect_id, "SET NAMES 'utf8'");
 
 			// enforce strict mode on databases that support it
@@ -148,7 +155,9 @@ class mysqli extends \phpbb\db\driver\mysql_base
 		switch ($status)
 		{
 			case 'begin':
-				return @mysqli_autocommit($this->db_connect_id, false);
+				@mysqli_autocommit($this->db_connect_id, false);
+				$result = @mysqli_begin_transaction($this->db_connect_id);
+				return $result;
 			break;
 
 			case 'commit':
@@ -190,7 +199,16 @@ class mysqli extends \phpbb\db\driver\mysql_base
 
 			if ($this->query_result === false)
 			{
-				if (($this->query_result = @mysqli_query($this->db_connect_id, $query)) === false)
+				try
+				{
+					$this->query_result = @mysqli_query($this->db_connect_id, $query);
+				}
+				catch (\Error $e)
+				{
+					// Do nothing as SQL driver will report the error
+				}
+
+				if ($this->query_result === false)
 				{
 					$this->sql_error($query);
 				}
@@ -247,9 +265,10 @@ class mysqli extends \phpbb\db\driver\mysql_base
 			$query_id = $this->query_result;
 		}
 
-		if ($cache && !is_object($query_id) && $cache->sql_exists($query_id))
+		$safe_query_id = $this->clean_query_id($query_id);
+		if ($cache && $cache->sql_exists($safe_query_id))
 		{
-			return $cache->sql_fetchrow($query_id);
+			return $cache->sql_fetchrow($safe_query_id);
 		}
 
 		if ($query_id)
@@ -273,18 +292,19 @@ class mysqli extends \phpbb\db\driver\mysql_base
 			$query_id = $this->query_result;
 		}
 
-		if ($cache && !is_object($query_id) && $cache->sql_exists($query_id))
+		$safe_query_id = $this->clean_query_id($query_id);
+		if ($cache && $cache->sql_exists($safe_query_id))
 		{
-			return $cache->sql_rowseek($rownum, $query_id);
+			return $cache->sql_rowseek($rownum, $safe_query_id);
 		}
 
 		return ($query_id) ? @mysqli_data_seek($query_id, $rownum) : false;
 	}
 
 	/**
-	* {@inheritDoc}
-	*/
-	function sql_nextid()
+	 * {@inheritdoc}
+	 */
+	public function sql_last_inserted_id()
 	{
 		return ($this->db_connect_id) ? @mysqli_insert_id($this->db_connect_id) : false;
 	}
@@ -301,9 +321,10 @@ class mysqli extends \phpbb\db\driver\mysql_base
 			$query_id = $this->query_result;
 		}
 
-		if ($cache && !is_object($query_id) && $cache->sql_exists($query_id))
+		$safe_query_id = $this->clean_query_id($query_id);
+		if ($cache && $cache->sql_exists($safe_query_id))
 		{
-			return $cache->sql_freeresult($query_id);
+			return $cache->sql_freeresult($safe_query_id);
 		}
 
 		if (!$query_id)
@@ -335,24 +356,24 @@ class mysqli extends \phpbb\db\driver\mysql_base
 	{
 		if ($this->db_connect_id)
 		{
-			$error = array(
-				'message'	=> @mysqli_error($this->db_connect_id),
-				'code'		=> @mysqli_errno($this->db_connect_id)
-			);
+			$error = [
+				'message'	=> $this->db_connect_id->error,
+				'code'		=> $this->db_connect_id->errno,
+			];
 		}
 		else if (function_exists('mysqli_connect_error'))
 		{
-			$error = array(
-				'message'	=> @mysqli_connect_error(),
-				'code'		=> @mysqli_connect_errno(),
-			);
+			$error = [
+				'message'	=> $this->db_connect_id->connect_error,
+				'code'		=> $this->db_connect_id->connect_errno,
+			];
 		}
 		else
 		{
-			$error = array(
+			$error = [
 				'message'	=> $this->connect_error,
 				'code'		=> '',
-			);
+			];
 		}
 
 		return $error;

@@ -24,7 +24,7 @@ class postgres extends tools
 	 *
 	 * @return array
 	 */
-	public static function get_dbms_type_map()
+	static public function get_dbms_type_map()
 	{
 		return array(
 			'postgres'	=> array(
@@ -102,7 +102,7 @@ class postgres extends tools
 	function sql_table_exists($table_name)
 	{
 		$sql = "SELECT CAST(EXISTS(
-			SELECT FROM information_schema.tables
+			SELECT * FROM information_schema.tables
 				WHERE table_schema = 'public'
 					AND table_name   = '" . $this->db->sql_escape($table_name) . "'
 			) AS INTEGER)";
@@ -147,7 +147,7 @@ class postgres extends tools
 
 			if (isset($prepared_column['auto_increment']) && $prepared_column['auto_increment'] && strlen($column_name) > 26) // "${column_name}_gen"
 			{
-				trigger_error("Index name '${column_name}_gen' on table '$table_name' is too long. The maximum auto increment column length is 26 characters.", E_USER_ERROR);
+				trigger_error("Index name '{$column_name}_gen' on table '$table_name' is too long. The maximum auto increment column length is 26 characters.", E_USER_ERROR);
 			}
 
 			// here we add the definition of the new column to the list of columns

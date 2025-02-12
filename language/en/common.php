@@ -64,6 +64,7 @@ $lang = array_merge($lang, array(
 	'ACCOUNT_DEACTIVATED'			=> 'Your account has been manually deactivated and is only able to be reactivated by an administrator.',
 	'ACP'							=> 'Administration Control Panel',
 	'ACP_SHORT'						=> 'ACP',
+	'ACTIVATION_ALREADY_SENT'		=> 'The activation email has already been sent to your email address. You can try again after 24 hours. If you continue to have problems activating your account, please contact a board administrator.',
 	'ACTIVE'						=> 'active',
 	'ACTIVE_ERROR'					=> 'The specified username is currently inactive. If you have problems activating your account, please contact a board administrator.',
 	'ADMINISTRATOR'					=> 'Administrator',
@@ -166,6 +167,11 @@ $lang = array_merge($lang, array(
 	'CHANGING_PREFERENCES'	=> 'Changing board preferences',
 	'CHANGING_PROFILE'		=> 'Changing profile settings',
 	'CHARACTERS'			=> array(
+		1	=> '%d character',
+		2	=> '%d characters',
+	),
+	// Special version to be used when describing ranges e.g. "min x characters and max y characters"
+	'CHARACTERS_XY'			=> array(
 		1	=> '%d character',
 		2	=> '%d characters',
 	),
@@ -432,6 +438,7 @@ $lang = array_merge($lang, array(
 	'MESSAGE'				=> 'Message',
 	'MESSAGES'				=> 'Messages',
 	'MESSAGES_COUNT'		=> array(
+		0	=> 'unlimited messages',
 		1	=> '%d message',
 		2	=> '%d messages',
 	),
@@ -603,7 +610,7 @@ $lang = array_merge($lang, array(
 	'POSTS_UNAPPROVED_FORUM'=> 'At least one post in this forum has not been approved.',
 	'POST_BY_AUTHOR'		=> 'by',
 	'POST_BY_FOE'			=> '<strong>%1$s</strong>, who is currently on your ignore list, made this post.',
-	'POST_DISPLAY'			=> '%1$sDisplay this post%2$s.',
+	'POST_DISPLAY'			=> 'Display this post',
 	'POST_DAY'				=> '%.2f posts per day',
 	'POST_DELETED_ACTION'	=> 'Deleted post:',
 	'POST_DELETED'			=> 'This post has been deleted.',
@@ -677,6 +684,10 @@ $lang = array_merge($lang, array(
 	'RETURN_TOPIC'				=> '%sReturn to the topic last visited%s',
 	'RETURN_TO'					=> 'Return to “%s”',
 	'RETURN_TO_INDEX'			=> 'Return to Board Index',
+
+	'ROUTE_NOT_FOUND'				=> 'The requested route “%s” could not be found.',
+	'ROUTE_INVALID_MISSING_PARAMS'	=> 'Invalid or missing parameters passed for route “%s”.',
+
 	'FEED'						=> 'Feed',
 	'FEED_NEWS'					=> 'News',
 	'FEED_TOPICS_ACTIVE'		=> 'Active Topics',

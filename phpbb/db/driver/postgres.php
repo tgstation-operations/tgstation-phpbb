@@ -188,7 +188,16 @@ class postgres extends \phpbb\db\driver\driver
 
 			if ($this->query_result === false)
 			{
-				if (($this->query_result = @pg_query($this->db_connect_id, $query)) === false)
+				try
+				{
+					$this->query_result = @pg_query($this->db_connect_id, $query);
+				}
+				catch (\Error $e)
+				{
+					// Do nothing as SQL driver will report the error
+				}
+
+				if ($this->query_result === false)
 				{
 					$this->sql_error($query);
 				}
@@ -207,14 +216,16 @@ class postgres extends \phpbb\db\driver\driver
 					return false;
 				}
 
+				$safe_query_id = $this->clean_query_id($this->query_result);
+
 				if ($cache && $cache_ttl)
 				{
-					$this->open_queries[(int) $this->query_result] = $this->query_result;
+					$this->open_queries[$safe_query_id] = $this->query_result;
 					$this->query_result = $cache->sql_save($this, $query, $this->query_result, $cache_ttl);
 				}
 				else if (strpos($query, 'SELECT') === 0)
 				{
-					$this->open_queries[(int) $this->query_result] = $this->query_result;
+					$this->open_queries[$safe_query_id] = $this->query_result;
 				}
 			}
 			else if ($this->debug_sql_explain)
@@ -340,9 +351,9 @@ class postgres extends \phpbb\db\driver\driver
 	}
 
 	/**
-	* {@inheritDoc}
-	*/
-	function sql_nextid()
+	 * {@inheritdoc}
+	 */
+	public function sql_last_inserted_id()
 	{
 		$query_id = $this->query_result;
 
@@ -544,17 +555,5 @@ class postgres extends \phpbb\db\driver\driver
 	function sql_quote($msg)
 	{
 		return '"' . $msg . '"';
-	}
-
-	/**
-	 * Ensure query ID can be used by cache
-	 *
-	 * @param resource|int|string $query_id Mixed type query id
-	 *
-	 * @return int|string Query id in string or integer format
-	 */
-	private function clean_query_id($query_id)
-	{
-		return is_resource($query_id) ? (int) $query_id : $query_id;
 	}
 }

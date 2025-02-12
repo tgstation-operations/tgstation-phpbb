@@ -480,7 +480,7 @@ class p_master
 	*/
 	function set_active($id = false, $mode = false)
 	{
-		global $request;
+		global $auth, $request, $user;
 
 		$icat = false;
 		$this->active_module = false;
@@ -500,6 +500,14 @@ class p_master
 		if ($id && !is_numeric($id) && !$this->is_full_class($id))
 		{
 			$id = $this->p_class . '_' . $id;
+		}
+
+		// Fallback to acp main page for special test permission mode
+		if ($this->p_class === 'acp' && $user->data['user_perm_from'] && $auth->acl_get('a_switchperm'))
+		{
+			$id = '';
+			$mode = '';
+			$icat = false;
 		}
 
 		$category = false;
@@ -662,7 +670,7 @@ class p_master
 		// Add url_extra parameter to u_action url
 		if (!empty($this->module_ary) && $this->active_module !== false && $this->module_ary[$this->active_module_row_id]['url_extra'])
 		{
-			$this->module->u_action .= $this->module_ary[$this->active_module_row_id]['url_extra'];
+			$this->module->u_action .= '&amp;' . $this->module_ary[$this->active_module_row_id]['url_extra'];
 		}
 
 		// Assign the module path for re-usage
@@ -920,7 +928,7 @@ class p_master
 			}
 
 			// Was not allowed in categories before - /*!$item_ary['cat'] && */
-			$u_title .= (isset($item_ary['url_extra'])) ? $item_ary['url_extra'] : '';
+			$u_title .= (isset($item_ary['url_extra']) && $item_ary['url_extra']) ? '&amp;' . $item_ary['url_extra'] : '';
 
 			// Only output a categories items if it's currently selected
 			if (!$depth || ($depth && (in_array($item_ary['parent'], array_values($this->module_cache['parents'])) || $item_ary['parent'] == $this->p_parent)))

@@ -31,6 +31,7 @@ class manager
 	protected $php_ext;
 	protected $extensions;
 	protected $extension_table;
+	protected $filesystem;
 	protected $phpbb_root_path;
 	protected $cache_name;
 
@@ -197,7 +198,7 @@ class manager
 
 		if ($this->cache)
 		{
-			$this->cache->purge();
+			$this->cache->deferred_purge();
 		}
 	}
 
