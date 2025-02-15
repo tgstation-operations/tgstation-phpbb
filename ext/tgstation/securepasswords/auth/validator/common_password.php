@@ -3,22 +3,23 @@
 namespace tgstation\securepasswords\auth\validator;
 
 /**
-* Common password checking. Do not scroll too far down.
-*/
+ * Common password checking. Do not scroll too far down.
+ */
 class common_password implements validator_interface
 {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function is_invalid($password) {
-		if (!$password) 
+	public static function is_invalid($password)
+	{
+		if (!$password)
 			return "Empty Password";
 		$parray = str_split(strtolower($password));
 		if (!$parray) {
 			return "Invalid data given to validator";
 		}
-		
-		foreach ($parray as $k=>$c) {
+
+		foreach ($parray as $k => $c) {
 			switch ($c) {
 				case '$':
 					$parray[$k] = '[\$s]';
@@ -45,12 +46,12 @@ class common_password implements validator_interface
 					break;
 			}
 		}
-		$regex = '/(?P<rank>[0-9]+)\|(?P<matched_password>'.join($parray).')\|(?P<usage_count>[0-9]+)/miS';
+		$regex = '/(?P<rank>[0-9]+)\|(?P<matched_password>' . join($parray) . ')\|(?P<usage_count>[0-9]+)/miS';
 		if (!preg_match($regex, self::$commonpasswords, $matches)) {
 			return false;
 		}
 
-		return '<B>SHITTY PASSWORD DETECTED</B> - The password of "'.htmlspecialchars($password).'" is too common or too closely resembles the common password of "'.htmlspecialchars($matches['matched_password']).'" which currently sits at number '.$matches['rank'].' on the common passwords list.';
+		return '<B>SHITTY PASSWORD DETECTED</B> - The password of "' . htmlspecialchars($password) . '" is too common or too closely resembles the common password of "' . htmlspecialchars($matches['matched_password']) . '" which currently sits at number ' . $matches['rank'] . ' on the common passwords list.';
 	}
 	//Don't ask.
 	private static $commonpasswords = <<<'COMMONPASSWORDSEND'
