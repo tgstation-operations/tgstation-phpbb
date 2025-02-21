@@ -9,8 +9,6 @@
 /phpBB/images/avatars/upload/*
 /phpBB/images/ranks/*
 /phpBB/install/schemas/schema.json
-/phpBB/language/*
-!/phpBB/language/en
 /phpBB/store/*
 /phpBB/styles/*
 !/phpBB/styles/prosilver
