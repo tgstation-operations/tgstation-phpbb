@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-{META}
-<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=vMMm9050Gy">
-<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=vMMm9050Gy">
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=vMMm9050Gy">
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=vMMm9050Gy">
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=vMMm9050Gy">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=vMMm9050Gy">
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=vMMm9050Gy">
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=vMMm9050Gy">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=vMMm9050Gy">
-<link rel="icon" type="image/png" href="/favicon-32x32.png?v=vMMm9050Gy" sizes="32x32">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=vMMm9050Gy" sizes="192x192">
-<link rel="icon" type="image/png" href="/favicon-96x96.png?v=vMMm9050Gy" sizes="96x96">
-<link rel="icon" type="image/png" href="/favicon-16x16.png?v=vMMm9050Gy" sizes="16x16">
-<link rel="manifest" href="/manifest.json?v=vMMm9050Gy">
-<link rel="mask-icon" href="/safari-pinned-tab.svg?v=vMMm9050Gy" color="#082338">
-<link rel="shortcut icon" href="/favicon.ico?v=vMMm9050Gy">
-<meta name="msapplication-TileColor" content="#082338">
-<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=vMMm9050Gy">
-<meta name="theme-color" content="#082338">
-<title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {META}
+
+    <title>
+      <!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!--
+      ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!--
+      ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} -
+      <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> -
+      {SITENAME}<!-- ENDIF -->
+    </title>
 
 <!-- IF S_ENABLE_FEEDS -->
 	<!-- IF S_ENABLE_FEEDS_OVERALL --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {SITENAME}" href="{{ path('phpbb_feed_index') }}"><!-- ENDIF -->
