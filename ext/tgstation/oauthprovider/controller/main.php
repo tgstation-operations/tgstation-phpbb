@@ -182,7 +182,7 @@ class main
 		$application_row = $this->db->sql_fetchrow($application_result);
 
 		if (empty($application_row) || !$application_row || count($application_row) < 1) {
-			throw new \phpbb\exception\http_exception(400, 'Invalid client_id.', [$client_id]);
+			throw new \phpbb\exception\http_exception(400, 'Invalid client_id.', [$get_client_id]);
 		}
 		$parsed_get_redirect_uri = parse_url($get_redirect_uri);
 		$redirect_uri = $get_redirect_uri;
@@ -522,7 +522,7 @@ class main
 		$algo = strtok($decoded_token, '~');
 		$token_hash = strtok("\0");
 		if (!in_array($algo, hash_algos())) {
-			return null;
+			return false;
 		}
 		$hashed_user_token = $this->token_hash($user_token, $algo);
 
@@ -532,7 +532,7 @@ class main
 		$user_token_hash = strtok("\0");
 
 		if (strlen($token_hash) < 20 || strlen($user_token_hash) < 20) {
-			return null;
+			return false;
 		}
 		return hash_equals($token_hash, $user_token_hash);
 	}
