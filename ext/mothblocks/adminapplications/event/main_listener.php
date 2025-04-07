@@ -75,6 +75,7 @@ class main_listener implements EventSubscriberInterface {
 			&& $this->is_our_post($post_data["topic_id"])
 		) {
 			$post_data["forum_id"] = PLAYER_FACING_BOARD;
+			$event["forum_id"] = PLAYER_FACING_BOARD;
 			$event["post_data"] = $post_data;
 		}
 	}
