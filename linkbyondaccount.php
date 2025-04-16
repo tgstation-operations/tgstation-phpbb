@@ -70,13 +70,8 @@ print(<<<EOD
 	<br>
 	You will know this worked correctly if it opens a new window with your user profile page on the forums, with your byond info displayed.
 	<br>
-	<ul>
-		<li><a href="byond://bagil.tgstation13.org:2337">Bagil</a></li>
-		<li><a href="byond://sybil.tgstation13.org:1337">Sybil</a></li>
-		<li><a href="byond://terry.tgstation13.org:3337">Terry</a></li>
-		<li><a href="byond://tgmc.tgstation13.org:5337">TGMC</a></li>
-		<li><a href="byond://138.201.56.145:4337">Event hall</a></li>
-	</ul>
+    <br>
+	See <a href="https://tgstation13.org" target="_blank">tgstation13.org</a> for a list of our available servers.
 
 EOD
 );
