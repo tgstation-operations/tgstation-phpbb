@@ -38,7 +38,7 @@ if (strlen($token) == 128 && preg_match('/^[a-f0-9]+$/', $token)) {
 
     $bannedusernames = array();
 
-    $sql = "SELECT u.username AS username FROM `" . BANLIST_TABLE . "` AS b LEFT JOIN `" . PROFILE_FIELDS_DATA_TABLE . "` AS f ON (b.ban_userid = f.user_id) LEFT JOIN `phpbb_users` AS u on (u.user_id = b.ban_userid) WHERE b.ban_userid > 0 AND f.pf_byond_username IS NOT NULL AND ban_exclude <= 0 AND (ban_end = 0 OR ban_end > UNIX_TIMESTAMP()) AND f.pf_byond_username = '" . $db->sql_escape($key) . "'";
+    $sql = "SELECT u.username AS username FROM `" . BANLIST_TABLE . "` AS b LEFT JOIN `" . PROFILE_FIELDS_DATA_TABLE . "` AS f ON (b.ban_userid = f.user_id) LEFT JOIN `" . USERS_TABLE . "` AS u on (u.user_id = b.ban_userid) WHERE b.ban_userid > 0 AND f.pf_byond_username IS NOT NULL AND ban_exclude <= 0 AND (ban_end = 0 OR ban_end > UNIX_TIMESTAMP()) AND f.pf_byond_username = '" . $db->sql_escape($key) . "'";
     $result = $db->sql_query($sql);
     while ($row = $db->sql_fetchrow($result))
         $bannedusernames[] = $row['username'];
