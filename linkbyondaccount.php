@@ -20,8 +20,8 @@ if ($userid <= 1 || $usertype == 1 || $usertype == 2) {
     die();
 }
 
-if (isset($_GET['token']) && strlen($_GET['token']) == 128 && preg_match('/^[a-f0-9]+$/', $_GET['token'])) {
-    $token = $_GET['token'];
+$token = $request->variable('token', '');
+if (strlen($token) == 128 && preg_match('/^[a-f0-9]+$/', $token)) {
     $sql = "SELECT `key` FROM `tg_byond_oauth_tokens` WHERE token = '" . $db->sql_escape($token) . "' AND timestamp > DATE_SUB(CURDATE(),INTERVAL 30 MINUTE)";
     $result = $db->sql_query($sql);
     $key = $db->sql_fetchfield('key');
