@@ -15,7 +15,7 @@ $userid = (int)$user->data['user_id'];
 $usertype = $user->data['user_type'];
 
 if ($userid <= 1 || $usertype == 1 || $usertype == 2) {
-    header("location: ucp.php?mode=login&redirect=" . urlencode("linkbyondaccount.php?" . $_SERVER["QUERY_STRING"]));
+    header("location: ucp.php?mode=login&redirect=" . urlencode("linkbyondaccount.php?" . $request->server("QUERY_STRING")));
     //print_r($user);
     die();
 }
