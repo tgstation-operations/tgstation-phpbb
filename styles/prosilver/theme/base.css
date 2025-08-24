@@ -125,7 +125,14 @@ abbr[title] {
     }
 }
 
-.arainbow {
+.rainbow {
+    background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.animated_rainbow {
     background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
     background-clip: text;
     -webkit-background-clip: text;
