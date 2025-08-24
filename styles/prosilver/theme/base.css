@@ -112,31 +112,3 @@ ul {
 abbr[title] {
 	text-decoration: none;
 }
-
-@keyframes rainbow_animation {
-
-    0%,
-    100% {
-        background-position: 0 0;
-    }
-
-    50% {
-        background-position: 100% 0;
-    }
-}
-
-.rainbow {
-    background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.animated_rainbow {
-    background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: rainbow_animation 8s ease-in-out infinite;
-    background-size: 600% 100%;
-}
