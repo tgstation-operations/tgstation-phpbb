@@ -1,0 +1,21 @@
+{% INCLUDE 'overall_header.html' %}
+
+<h1>{{ lang('SETTINGS') }}</h1>
+
+<form id="acp_board" method="post" action="{{ U_ACTION }}">
+    <fieldset>
+        <dl>
+            <dt><label for="xff_trusted_ips">{{ lang('XFF_ACP_TRUSTED_IPS') }}</label></dt>
+            <dd><textarea name="xff_trusted_ips" id="xff_trusted_ips" rows="8" cols="50">{{ XFF_TRUSTED_IPS }}</textarea></dd>
+        </dl>
+
+        <p class="submit-buttons">
+            <input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}"/>&nbsp;
+            <input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}"/>
+        </p>
+
+        {{ S_FORM_TOKEN }}
+    </fieldset>
+</form>
+
+{% INCLUDE 'overall_footer.html' %}
