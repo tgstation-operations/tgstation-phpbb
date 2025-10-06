@@ -69,7 +69,7 @@ in
         description = "tgstation-phpbb setup";
         serviceConfig = {
             Type = "oneshot";
-            User = cfg.username;
+            User = "tgstation-phpbb";
             ExecStart = setup-script;
         };
         wantedBy = [ "multi-user.target" ];
