@@ -75,6 +75,4 @@ in
         wantedBy = [ "multi-user.target" ];
     };
   };
-  
-  tgstation-phpbb = temp-source-directory;
 }
