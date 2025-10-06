@@ -75,7 +75,7 @@ in
         serviceConfig = {
             Type = "oneshot";
             User = username;
-            ExecStart = setup-script;
+            ExecStart = "${setup-script}/bin/tgstation-phpbb-setup";
         };
         wantedBy = [ "multi-user.target" ];
     };
