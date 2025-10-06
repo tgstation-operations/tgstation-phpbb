@@ -59,8 +59,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    tgstation-phpbb = temp-source-directory;
-
     users.users.tgstation-phpbb = {
       isSystemUser = true;
       createHome = false;
@@ -77,4 +75,6 @@ in
         wantedBy = [ "multi-user.target" ];
     };
   };
+  
+  tgstation-phpbb = temp-source-directory;
 }
