@@ -12,24 +12,29 @@ let
   temp-directory = "/tmp/tgstation-phpbb";
   temp-generations-directory = "${temp-directory}/generations";
   temp-source-directory = "${temp-directory}/source";
+
+  username = "tgstation-phpbb";
   
-  setup-script = groupname: cache-path: avatars-path: pkgs.writeShellScriptBin "tgstation-phpbb-setup" ''
+  setup-script = pkgs.writeShellScriptBin "tgstation-phpbb-setup" ''
     mkdir -p ${temp-generations-directory}
     old_generations=($(ls -d ${temp-generations-directory}/*))
     generation_path="${temp-generations-directory}/$(uuidgen)"
     
     mkdir -m 640 -p $generation_path
     cp -r ${package}/* $generation_path/
+    chown -R ${username}:${cfg.groupname} $generation_path
 
     rm -rf $generation_path/cache
-    ln -s ${cache-path} $generation_path/cache
+    ln -s ${cfg.cache-path} $generation_path/cache
 
-    cp -r $generation_path/images/avatars/upload/* ${avatars-path}/
+    cp -r $generation_path/images/avatars/upload/* ${cfg.avatars-path}/
     rm -rf $generation_path/source/images/avatars/upload
-    ln -s ${avatars-path} $generation_path/images/avatars/upload
+    ln -s ${cfg.avatars-path} $generation_path/images/avatars/upload
 
     unlink ${temp-source-directory} 2>/dev/null || true
     ln -s $generation_path ${temp-source-directory}
+
+    rm -rf "''${old_generations[@]}"
   '';
 in
 {
@@ -59,7 +64,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.users.tgstation-phpbb = {
+    users.users."${username}" = {
       isSystemUser = true;
       createHome = false;
       group = cfg.groupname;
@@ -69,7 +74,7 @@ in
         description = "tgstation-phpbb setup";
         serviceConfig = {
             Type = "oneshot";
-            User = "tgstation-phpbb";
+            User = username;
             ExecStart = setup-script;
         };
         wantedBy = [ "multi-user.target" ];
