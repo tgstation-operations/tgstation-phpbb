@@ -3,7 +3,7 @@ name: Trigger Infrastructure Update
 on:
   push:
     branches:
-      - main
+      - master
 
 concurrency:
   group: "infra-update"
