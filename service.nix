@@ -18,7 +18,9 @@ let
   setup-script = pkgs.writeShellScriptBin "tgstation-phpbb-setup" ''
     mkdir -p ${temp-generations-directory}
     old_generations=($(ls -d ${temp-generations-directory}/*))
-    generation_path="${temp-generations-directory}/$(uuidgen)"
+    generation_path="${temp-generations-directory}/$(${pkgs.libuuid}/bin/uuidgen)"
+
+    echo "Generation Path is $generation_path"
     
     mkdir -m 640 -p $generation_path
     cp -r ${package}/* $generation_path/
