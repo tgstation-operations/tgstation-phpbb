@@ -70,7 +70,7 @@ in
       group = cfg.groupname;
     };
 
-    systemd.services.tgstation-phpbb= {
+    systemd.services.tgstation-phpbb = {
         description = "tgstation-phpbb setup";
         serviceConfig = {
             Type = "oneshot";
