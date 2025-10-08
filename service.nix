@@ -22,9 +22,10 @@ let
 
     echo "Generation Path is $generation_path"
     
-    mkdir -m 750 -p $generation_path
+    mkdir $generation_path
     cp -r ${package}/* $generation_path/
     chown -R ${username}:${cfg.groupname} $generation_path
+    chmod -R 750 $generation_path
 
     rm -rf $generation_path/cache
     ln -s ${cfg.cache-path} $generation_path/cache
