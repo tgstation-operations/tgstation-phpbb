@@ -81,6 +81,7 @@ in
             User = username;
             ExecStart = "${setup-script}/bin/tgstation-phpbb-setup";
             RuntimeDirectory = temp-directory-name;
+            RemainAfterExit = true;
         };
         wantedBy = [ "multi-user.target" ];
     };
