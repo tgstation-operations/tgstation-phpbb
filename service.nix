@@ -9,7 +9,8 @@ let
   package = ./.;
   cfg = config.services.tgstation-phpbb;
 
-  temp-directory = "/run/tgstation-phpbb";
+  temp-directory-name = "tgstation-phpbb";
+  temp-directory = "/run/${temp-directory-name}";
   temp-generations-directory = "${temp-directory}/generations";
   temp-source-directory = "${temp-directory}/source";
 
@@ -79,6 +80,7 @@ in
             Type = "oneshot";
             User = username;
             ExecStart = "${setup-script}/bin/tgstation-phpbb-setup";
+            RuntimeDirectory = temp-directory-name;
         };
         wantedBy = [ "multi-user.target" ];
     };
