@@ -9,7 +9,7 @@ let
   package = ./.;
   cfg = config.services.tgstation-phpbb;
 
-  temp-directory = "/tmp/tgstation-phpbb";
+  temp-directory = "/run/tgstation-phpbb";
   temp-generations-directory = "${temp-directory}/generations";
   temp-source-directory = "${temp-directory}/source";
 
