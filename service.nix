@@ -32,7 +32,7 @@ let
     ln -s ${cfg.cache-path} $generation_path/cache
 
     cp -r $generation_path/images/avatars/upload/* ${cfg.avatars-path}/
-    rm -rf $generation_path/source/images/avatars/upload
+    rm -rf $generation_path/images/avatars/upload
     ln -s ${cfg.avatars-path} $generation_path/images/avatars/upload
 
     unlink ${temp-source-directory} 2>/dev/null || true
