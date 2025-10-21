@@ -35,6 +35,10 @@ let
     rm -rf $generation_path/images/avatars/upload
     ln -s ${cfg.avatars-path} $generation_path/images/avatars/upload
 
+    cp -r $generation_path/files/* ${cfg.files-path}/
+    rm -rf $generation_path/files
+    ln -s ${cfg.files-path} $generation_path/files
+
     unlink ${temp-source-directory} 2>/dev/null || true
     ln -s $generation_path ${temp-source-directory}
 
@@ -63,6 +67,13 @@ in
         default = "/persist/tgstation-phpbb/avatars-upload";
         description = ''
             Path to the phpbb cache directory.
+        '';
+    };
+    files-path = lib.mkOption {
+        type = lib.types.path;
+        default = "/persist/tgstation-phpbb/files-upload";
+        description = ''
+            Path to the phpbb files directory.
         '';
     };
   };
