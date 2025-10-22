@@ -115,6 +115,7 @@ class listener implements EventSubscriberInterface
 		if ($sort_key == 't' && $this->config['display_last_post_show'] && $start > 0)
 		{
 			$new_post_list = array();
+			$new_post_list[0] = null;
 			foreach ($post_list as $key => $value)
 			{
 				$new_post_list[$key+1] = $value;
