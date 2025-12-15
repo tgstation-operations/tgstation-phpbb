@@ -1,0 +1,27 @@
+{
+	"name": "bakasura/xforwardedfor",
+	"type": "phpbb-extension",
+	"description": "X-Forwarded-For Extension for phpBB 3.3",
+	"homepage": "https://github.com/BakasuraRCE/xforwardedfor",
+	"version": "1.0.0",
+	"keywords": ["phpbb", "extension", "trusted ip", "ip", "x-forwarded-for", "session", "cloudflare", "security"],
+	"license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Bakasura",
+            "email": "@bakasura-rce:matrix.org",
+            "homepage": "https://bakasurarce.github.io/",
+            "role": "Developer"
+        }
+    ],
+	"require": {
+		"php": ">=5.4",
+		"composer/installers": "~1.0"
+	},
+	"extra": {
+		"display-name": "X-Forwarded-For",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.10,<3.3.0@dev"
+		}
+	}
+}
