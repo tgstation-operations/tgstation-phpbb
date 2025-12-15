@@ -1,0 +1,8 @@
+services:
+    bakasura.xforwardedfor.listener:
+        class: bakasura\xforwardedfor\event\listener
+        arguments:
+            - '@request'
+            - '@config_text'
+        tags:
+            - { name: event.listener }
