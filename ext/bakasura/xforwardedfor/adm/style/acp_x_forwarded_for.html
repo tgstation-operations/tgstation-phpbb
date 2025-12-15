@@ -5,9 +5,28 @@
 <form id="acp_board" method="post" action="{{ U_ACTION }}">
     <fieldset>
         <dl>
-            <dt><label for="xff_trusted_ips">{{ lang('XFF_ACP_TRUSTED_IPS') }}</label></dt>
-            <dd><textarea name="xff_trusted_ips" id="xff_trusted_ips" rows="8" cols="50">{{ XFF_TRUSTED_IPS }}</textarea></dd>
+            <dt><label for="xff_auto_fetch_cloudflare">{{ lang('XFF_AUTO_FETCH_CLOUDFLARE') }}</label><br /><span>{{ lang('XFF_AUTO_FETCH_CLOUDFLARE_EXPLAIN') }}</span></dt>
+            <dd><input type="checkbox" name="xff_auto_fetch_cloudflare" id="xff_auto_fetch_cloudflare" value="1" {% if XFF_AUTO_FETCH_CLOUDFLARE %}checked="checked"{% endif %} /></dd>
         </dl>
+
+        {% if XFF_LAST_FETCH_TIME %}
+        <dl>
+            <dt></dt>
+            <dd><em>{{ XFF_LAST_FETCH_TIME }}</em></dd>
+        </dl>
+        {% endif %}
+
+        <dl>
+            <dt><label for="xff_trusted_ips">{{ lang('XFF_ACP_TRUSTED_IPS') }}</label></dt>
+            <dd><textarea name="xff_trusted_ips" id="xff_trusted_ips" rows="8" cols="50" {% if XFF_AUTO_FETCH_CLOUDFLARE %}readonly="readonly" style="background-color: #f0f0f0;"{% endif %}>{{ XFF_TRUSTED_IPS }}</textarea></dd>
+        </dl>
+
+        {% if XFF_FETCH_MESSAGE %}
+        <dl>
+            <dt></dt>
+            <dd><p class="error">{{ XFF_FETCH_MESSAGE }}</p></dd>
+        </dl>
+        {% endif %}
 
         <p class="submit-buttons">
             <input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}"/>&nbsp;

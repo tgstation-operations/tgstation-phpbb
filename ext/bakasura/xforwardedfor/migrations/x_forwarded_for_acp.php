@@ -34,6 +34,12 @@ class x_forwarded_for_acp extends \phpbb\db\migration\container_aware_migration
                 '173.245.48.0/20, 103.21.244.0/22, 103.22.200.0/22, 103.31.4.0/22, 141.101.64.0/18, 108.162.192.0/18, 190.93.240.0/20, 188.114.96.0/20, 197.234.240.0/22, 198.41.128.0/17, 162.158.0.0/15, 104.16.0.0/13, 104.24.0.0/14, 172.64.0.0/13, 131.0.72.0/22, 2400:cb00::/32, 2606:4700::/32, 2803:f800::/32, 2405:b500::/32, 2405:8100::/32, 2a06:98c0::/29, 2c0f:f248::/32'
             ]],
 
+            // Add config for auto-fetch Cloudflare IPs
+            ['config.add', ['xff_auto_fetch_cloudflare', 0]],
+
+            // Add config for last fetch time
+            ['config.add', ['xff_last_fetch_time', 0]],
+
             // Add a parent module (XFF_ACP_TITLE) to the Extensions tab (ACP_CAT_DOT_MODS)
             ['module.add', [
                 'acp',

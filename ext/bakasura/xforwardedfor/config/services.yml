@@ -6,3 +6,9 @@ services:
             - '@config_text'
         tags:
             - { name: event.listener }
+
+    bakasura.xforwardedfor.cloudflare_ip_fetcher:
+        class: bakasura\xforwardedfor\service\cloudflare_ip_fetcher
+        arguments:
+            - '@config_text'
+            - '@config'
